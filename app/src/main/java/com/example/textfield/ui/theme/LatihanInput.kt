@@ -15,11 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
-
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -28,19 +27,19 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun LatihanInput(modifier: Modifier = Modifier){
 
-    var nama by remember { mutableStateOf() }
-    var alamat by remember { mutableStateOf() }
-    var email by remember { mutableStateOf() }
-    var notelpon by remember { mutableStateOf() }
-    var gender by remember { mutableStateOf() }
+    var nama by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var notelpon by remember { mutableStateOf("") }
+    var gender by remember { mutableStateOf("") }
 
     var datagender = listOf("Laki-Laki","Perempua")
 
-    var confnama by remember { mutableStateOf() }
-    var confalamat by remember { mutableStateOf() }
-    var confemail by remember { mutableStateOf() }
-    var confnotelpon by remember { mutableStateOf() }
-    var confgender by remember { mutableStateOf() }
+    var confnama by remember { mutableStateOf("") }
+    var confalamat by remember { mutableStateOf("") }
+    var confemail by remember { mutableStateOf("") }
+    var confnotelpon by remember { mutableStateOf("") }
+    var confgender by remember { mutableStateOf("") }
 
     Column (
         modifier = modifier.fillMaxSize().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally
@@ -77,14 +76,15 @@ fun LatihanInput(modifier: Modifier = Modifier){
             placeholder = {
                 Text("Isi email anda")
             },
-            modifier = Modifier.fillMaxWidth().padding(5.dp)
-            keyboardOption = KeyboardOptions(keyboardType = KeyboardType.Number)
+            modifier = Modifier.fillMaxWidth().padding(5.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+
 
         )
 
         TextField(
             value = alamat,
-            onValueChange = {nama = it},
+            onValueChange = {alamat = it},
             label = {
                 Text(text = "Alamat")
             },
@@ -99,14 +99,13 @@ fun LatihanInput(modifier: Modifier = Modifier){
             value = notelpon,
             onValueChange = {notelpon = it},
             label = {
-                Text(text = "Notelpon")
+                Text(text = "No.Telpon")
             },
             placeholder = {
-                Text("Isi notelpon anda")
+                Text("Isi no.telpon anda")
             },
-            modifier = Modifier.fillMaxWidth().padding(5.dp)
-            keyboardOption = KeyboardOptions(keyboardType = KeyboardType.Number)
-
+            modifier = Modifier.fillMaxWidth().padding(5.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         Button(onClick = {
             confnama = nama
@@ -118,24 +117,23 @@ fun LatihanInput(modifier: Modifier = Modifier){
             Text(text = "Simpan")
         }
         Tampildata(
-            Param = nama,
-            Argu = confnama,
-            )
-
-        Tampildata(
-            Param = email,
+            Param = "nama",
             Argu = confemail,
         )
         Tampildata(
-            Param = alamat,
+            Param = "email",
+            Argu = confemail,
+        )
+        Tampildata(
+            Param = "alamat",
             Argu = confalamat,
         )
         Tampildata(
-            Param = notelpon,
+            Param = "notelpon",
             Argu = confnotelpon,
         )
         Tampildata(
-            Param = gender,
+            Param = "gender",
             Argu = confgender,
         )
 

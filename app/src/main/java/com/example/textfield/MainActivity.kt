@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.textfield.ui.theme.LatihanInput
 import com.example.textfield.ui.theme.TextFieldTheme
 
 class MainActivity : ComponentActivity() {
